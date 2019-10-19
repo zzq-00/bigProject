@@ -60,14 +60,15 @@ $(function () {
       },
       dataType:'json',
       success:function(backData){
-        console.log(backData);
+        // console.log(backData);
         if (backData.code === 400) {
           alert(backData.msg);
         }else if(backData.code===200){
           // alert(backData.msg);
+          // 保存tonke，
+          localStorage.setItem('token',backData.token);
           location.href ='./index.html';
-        }
-        
+        }      
       }
     })
   })
