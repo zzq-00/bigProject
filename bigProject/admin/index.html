@@ -36,9 +36,9 @@
                 </li>
             </ul>
 
-            <div class="level01"><a href="#" target="main_frame"><i
+            <div class="level01"><a href="./comment_list.html" target="main_frame"><i
                         class="iconfont icon-comment"></i><span>评论管理</span></a></div>
-            <div class="level01" id="user"><a href="#" target="main_frame"><i
+            <div class="level01" id="user"><a href="./user.html" target="main_frame"><i
                         class="iconfont icon-user"></i><span>个人中心</span></a></div>
         </div>
         <!-- 顶部栏 -->
@@ -51,8 +51,21 @@
         </div>
         <!-- 右侧主体内容 -->
         <div class="main" id="main_body">
-
+            <iframe name="main_frame" src="./main_count.html" frameborder="0"></iframe>
         </div>
     </div>
 </body>
 </html>
+<script>
+    $(function () {
+        // 点击文章列表下拉
+        $('.level01:eq(1)').click(function () {
+            $(this).next('.level02').stop().slideToggle();
+        })
+        // 点击切换高亮效果
+        $('.level01').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        }) 
+    })
+    
+</script>
