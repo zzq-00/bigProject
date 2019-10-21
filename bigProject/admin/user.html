@@ -88,8 +88,30 @@
             }
         });
 
+        // 点击修改--修改个人信息--改变头像信息
+        $('.btn-edit').click(function (e) {
+            e.preventDefault();
+            // 获取表单信息
+           var formdata = new FormData($('form')[0]);
+           $.ajax({
+               url:BigNew.user_edit,
+               type:'post',
+               data:formdata,
+               contentType:false,
+               processData:false,
+               success:function(backData){
+                   console.log(backData);
+                   if (backDat.code===200) {
+                       // ifarme--刷新父页面
+                        window.parent.location.reload();  
+                   }
+                                 
+               }
+           })
+        });
 
-        
+       
+
 
     })
    
