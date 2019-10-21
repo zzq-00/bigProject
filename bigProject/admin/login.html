@@ -53,18 +53,18 @@ $(function () {
     }
     $.ajax({
       type:'post',
-      url:"http://localhost:8080/api/v1/admin/user/login",
+      url:BigNew.user_login,
       data:{
         username:username,
         password:password
       },
       dataType:'json',
       success:function(backData){
-        // console.log(backData);
+        console.log(backData);
         if (backData.code === 400) {
           alert(backData.msg);
         }else if(backData.code===200){
-          // alert(backData.msg);
+          alert(backData.msg);
           // 保存tonke，
           localStorage.setItem('token',backData.token);
           location.href ='./index.html';
