@@ -101,7 +101,7 @@
                processData:false,
                success:function(backData){
                    console.log(backData);
-                   if (backDat.code===200) {
+                   if (backData.code===200) {
                        // ifarme--刷新父页面
                         window.parent.location.reload();  
                    }
@@ -111,6 +111,14 @@
         });
 
        
+        // 获取图片
+        $('#exampleInputFile').change(function () {      
+        
+            var url = URL.createObjectURL(this.files[0]);
+            // console.log(url);
+            
+            $('.user_pic').attr('src',url)
+        })
 
 
     })
