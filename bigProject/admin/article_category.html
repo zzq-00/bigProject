@@ -93,7 +93,7 @@
         <td>{{$value.slug}}</td>
         <td class="text-center">
             <a href="javascript:void(0);" data-toggle="modal" class=" btn btn-info btn-xs">编辑</a>
-            <a href="javascript:void(0);" data-id="{{$value.id}}" class="btn btn-danger btn-xs">删除</a>
+            <a href="javascript:void(0);" data-id="{{$value.id}}" class="btn btn-danger btn-xs btn-del">删除</a>
         </td>
     </tr>
     {{/each}}
@@ -104,7 +104,7 @@
         $.ajax({
             url: BigNew.category_list,
             success: function (backData) {
-            console.log(backData);
+            // console.log(backData);
                 if (backData.code === 200) {
                     var tr = template('cateTam', backData);
                     $('tbody').html(tr);
@@ -130,19 +130,35 @@
                slug:slug
            },
            success:function(backData){
-               console.log(backData);
+            //    console.log(backData);
                //如果数据获取成功
                if (backData.code==201) {
                     // 弹出框隐藏
                     $("#myModal").modal("hide");
                     // 数据重新渲染到页面
                    loadData();
-               }
-
-               
+               }              
            }
        })
-
     })
 
+
+    // 点击删除--删除此条记录【动态创建--委托事件】
+    $('tbody').on('click','.btn-del',function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            type:'post',
+            url:BigNew.category_delete,
+            data:{
+                id:id
+            },
+            success:function(backData){
+                console.log(backData);
+                if(backData.code===204){
+                    loadData();
+                }
+                
+            }
+        })
+    })
 </script>
