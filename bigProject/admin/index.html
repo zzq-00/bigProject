@@ -74,7 +74,7 @@
                 Authorization:localStorage.getItem('token')
             },
             success:function(backData){
-                console.log(backData);
+                // console.log(backData);
                 $('.user_info>img').prop('src',backData.data.userPic);
                 $('.user_info>span').text('欢迎  '+backData.data.nickname);
 

@@ -71,3 +71,26 @@
 </body>
 
 </html>
+<script>
+    $(function () {
+        // 获取登录的用户信息
+        $.ajax({
+            url:BigNew.user_detail,
+            success:function(backData){
+                console.log(backData);
+                // var username = $('.username').val(backData.data.username);
+                // var nickname = $('.nickname').val();               
+                for(var key in backData.data){
+                    $('.'+key).val(backData.data[key]);
+                }
+                //图片单独设置【类名与数据名不一样】
+                $('.user_pic').attr('src',backData.data.userPic); 
+            }
+        });
+
+
+        
+
+    })
+   
+</script>
